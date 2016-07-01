@@ -239,7 +239,8 @@ var bigpicture = (function() {
   else {
     mousewheel = function(e) {
       e.preventDefault();
-      var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+      var slowdown = 10;
+      var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail))) / slowdown;
       onZoom((delta > 0) ? current.zoom / 1.7 : current.zoom * 1.7, current.x + e.clientX * current.zoom, current.y + e.clientY * current.zoom, e.clientX, e.clientY);
     };
   }
